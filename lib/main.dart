@@ -66,12 +66,14 @@ class _ShoppingCartState extends State<ShoppingCart> {
     setState(() {
       if (products[index].quantity < 5) {
         products[index].quantity++;
-      } else {
+      }
+
+      if (products[index].quantity == 5) {
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
             title: Text('Congratulations!'),
-            content: Text('You have added 5 ${products[index].name} on your bag!'),
+            content: Text('You have added 5 ${products[index].name} to your bag!'),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
@@ -82,6 +84,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
         );
       }
     });
+
   }
 
   void decrementQuantity(int index) {
